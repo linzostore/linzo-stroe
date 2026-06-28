@@ -1,0 +1,6 @@
+{
+  "name": "LINZO STORE",
+  "description": "Mobile game currency and gift card top-up store with loyalty rewards, secure payment simulation, order status tracking, and full Google Workspace integration for Gmail, Contacts, and Calendar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
