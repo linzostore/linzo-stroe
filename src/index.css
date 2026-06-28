@@ -94,3 +94,170 @@ body {
   white-space: nowrap;
   animation: marquee 30s linear infinite;
 }
+
+/* HIGH-CONTRAST LIGHT MODE */
+html.light {
+  background-color: #f8fafc !important;
+}
+
+html.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important; /* high contrast charcoal/slate-900 */
+}
+
+/* Background classes overrides */
+html.light .min-h-screen,
+html.light .bg-\[\#0B0F1A\],
+html.light .bg-slate-950,
+html.light .bg-slate-900,
+html.light .bg-slate-800,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-950\/40,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-950\/20,
+html.light .bg-slate-950\/60,
+html.light .bg-slate-900\/50,
+html.light .bg-indigo-950\/20,
+html.light .to-slate-900\/40 {
+  background-color: #f1f5f9 !important;
+  background-image: none !important;
+}
+
+/* Card structures, navigation drawers, and overlays */
+html.light .premium-glass-panel,
+html.light .bg-\[\#0F172A\],
+html.light .bg-dark-card,
+html.light nav,
+html.light .fixed.inset-y-0.left-0 {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  backdrop-filter: none !important;
+}
+
+/* High contrast text */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light .text-white,
+html.light .font-black {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-200,
+html.light .text-slate-300,
+html.light .text-slate-400,
+html.light .text-gray-300,
+html.light .text-gray-400 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-500,
+html.light .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-505 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+/* High contrast accent colors for light mode */
+html.light .text-indigo-400 {
+  color: #4f46e5 !important; /* Indigo-600 */
+}
+
+html.light .text-emerald-400 {
+  color: #16a34a !important; /* Emerald-600 */
+}
+
+html.light .text-amber-400,
+html.light .text-amber-500 {
+  color: #ca8a04 !important; /* Amber-600 */
+}
+
+/* Badges and tags */
+html.light .bg-emerald-500\/10 {
+  background-color: #d1fae5 !important;
+  color: #16a34a !important;
+}
+
+html.light .bg-amber-500\/10 {
+  background-color: #fef3c7 !important;
+  color: #ca8a04 !important;
+}
+
+html.light .bg-indigo-brand\/10 {
+  background-color: #e0e7ff !important;
+  color: #4f46e5 !important;
+}
+
+html.light .bg-blue-500\/10 {
+  background-color: #e0f2fe !important;
+  color: #0284c7 !important;
+}
+
+html.light .bg-white\/5,
+html.light .bg-white\/10,
+html.light .bg-white\/15 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Borders */
+html.light .border-slate-800,
+html.light .border-slate-700,
+html.light .border-slate-800\/60,
+html.light .border-slate-700\/50,
+html.light .border-slate-700\/40,
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/20,
+html.light .border-white\/8,
+html.light .border-indigo-500\/20,
+html.light .border-white\/15,
+html.light hr {
+  border-color: #cbd5e1 !important;
+}
+
+/* Form Inputs, Select lists, Textareas */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Interactive hover lists and selection cards */
+html.light .hover\:bg-slate-800:hover,
+html.light .hover\:bg-slate-900:hover,
+html.light .hover\:bg-white\/5:hover {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .hover\:border-slate-700:hover {
+  border-color: #94a3b8 !important;
+}
+
+/* Glow layout effect */
+html.light .radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.05) 0%, rgba(0,0,0,0) 70%) !important;
+}
+
+/* Shadow definition for better contrast depth */
+html.light .premium-glass-panel,
+html.light .rounded-2xl,
+html.light .rounded-xl {
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03) !important;
+}

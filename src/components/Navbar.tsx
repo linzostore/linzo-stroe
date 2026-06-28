@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
-import { Bell, Coins, LogOut, Menu, X, Award, ShoppingBag, ShieldCheck, Gamepad2, Settings, Layers } from "lucide-react";
+import { Bell, Coins, LogOut, Menu, X, Award, ShoppingBag, ShieldCheck, Gamepad2, Settings, Layers, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface NavbarProps {
@@ -9,7 +9,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
-  const { user, notifications, markAllNotificationsRead, clearNotifications, resetUserProgress, currency, toggleCurrency } = useApp();
+  const { user, notifications, markAllNotificationsRead, clearNotifications, resetUserProgress, currency, toggleCurrency, theme, toggleTheme } = useApp();
   const [showNotifDrawer, setShowNotifDrawer] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -117,6 +117,16 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                 BDT
               </button>
             </div>
+
+            {/* Theme Toggle Button */}
+            <button
+              id="btn-theme-toggle"
+              onClick={toggleTheme}
+              className="p-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center shadow-inner hover:scale-105 active:scale-95"
+              title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {theme === "dark" ? <Sun size={15} className="text-amber-400" /> : <Moon size={15} className="text-indigo-400" />}
+            </button>
 
             <div className="h-8 w-px bg-slate-800 hidden sm:block"></div>
 
@@ -244,6 +254,54 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                       {user.tier}
                     </span>
                   </div>
+                </div>
+
+                {/* Mobile Preferences (Currency + Theme) */}
+                <div className="flex gap-2.5 items-center justify-between mb-6 bg-white/5 border border-white/5 p-2 rounded-xl">
+                  {/* Currency Converter */}
+                  <div className="flex items-center gap-1 bg-slate-950 border border-slate-800 p-1 rounded-xl shadow-inner select-none">
+                    <button
+                      id="mobile-btn-currency-usd"
+                      onClick={() => currency !== "USD" && toggleCurrency()}
+                      className={`px-2 py-1 rounded-lg text-[9px] font-black tracking-wider transition-all cursor-pointer ${
+                        currency === "USD"
+                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/10"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      USD
+                    </button>
+                    <button
+                      id="mobile-btn-currency-bdt"
+                      onClick={() => currency !== "BDT" && toggleCurrency()}
+                      className={`px-2 py-1 rounded-lg text-[9px] font-black tracking-wider transition-all cursor-pointer ${
+                        currency === "BDT"
+                          ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/10"
+                          : "text-slate-400 hover:text-white"
+                      }`}
+                    >
+                      BDT
+                    </button>
+                  </div>
+
+                  {/* Theme Toggle */}
+                  <button
+                    id="mobile-btn-theme-toggle"
+                    onClick={toggleTheme}
+                    className="flex-1 flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer select-none"
+                  >
+                    {theme === "dark" ? (
+                      <>
+                        <Sun size={13} className="text-amber-400" />
+                        <span className="text-[10px] font-black tracking-wider uppercase">Light</span>
+                      </>
+                    ) : (
+                      <>
+                        <Moon size={13} className="text-indigo-400" />
+                        <span className="text-[10px] font-black tracking-wider uppercase">Dark</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
                 {/* Dynamic Links list */}

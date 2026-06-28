@@ -21,6 +21,8 @@ interface AppContextType {
   currency: "USD" | "BDT";
   toggleCurrency: () => void;
   formatPrice: (usdAmount: number) => string;
+  theme: "dark" | "light";
+  toggleTheme: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -107,6 +109,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [currency, setCurrency] = useState<"USD" | "BDT">(() => {
     return (localStorage.getItem("linzo_currency") as "USD" | "BDT") || "USD";
   });
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    return (localStorage.getItem("linzo_theme") as "dark" | "light") || "dark";
+  });
 
   useEffect(() => {
     localStorage.setItem("linzo_user", JSON.stringify(user));
@@ -123,6 +128,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     localStorage.setItem("linzo_currency", currency);
   }, [currency]);
+
+  useEffect(() => {
+    localStorage.setItem("linzo_theme", theme);
+    if (theme === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+  }, [theme]);
 
   // Unified automatic point update & Tier calculator
   const calculateTier = (totalSpent: number): LoyaltyTier => {
@@ -290,6 +304,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrency(prev => (prev === "USD" ? "BDT" : "USD"));
   };
 
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "dark" ? "light" : "dark"));
+  };
+
   const formatPrice = (usdAmount: number) => {
     if (currency === "BDT") {
       return `৳${Math.round(usdAmount * 120)}`;
@@ -304,6 +322,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setActiveToast(null);
     setActiveModalGame(null);
     setCurrency("USD");
+    setTheme("dark");
   };
 
   return (
@@ -326,7 +345,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         claimDailyBonus,
         currency,
         toggleCurrency,
-        formatPrice
+        formatPrice,
+        theme,
+        toggleTheme
       }}
     >
       {children}
